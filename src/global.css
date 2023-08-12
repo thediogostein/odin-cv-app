@@ -231,6 +231,7 @@ main {
 .main-wrapper {
   display: flex;
   gap: 2rem;
+  align-items: start;
 }
 
 .componentSection {

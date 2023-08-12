@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import Button from '../UI/Button';
 import styles from './PersonalDetails.module.css';
 
-const detailsObj = {
-  firstName: '',
-  lastName: '',
-  professionalTitle: '',
-  summary: '',
-};
-
 const PersonalDetails = ({ savePersonalDetails }) => {
-  const [details, setDetails] = useState(detailsObj);
+  const [details, setDetails] = useState({
+    firstName: '',
+    lastName: '',
+    professionalTitle: '',
+    summary: '',
+  });
   const [isEditing, setIsEditing] = useState(true);
-  const [requiredMessage, setRequiredMessage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,13 +29,10 @@ const PersonalDetails = ({ savePersonalDetails }) => {
     }
     savePersonalDetails(details);
     setIsEditing(false);
-    // setDetails(detailsObj);
   };
 
   const viewTemplate = (
-    <section
-      className={`{styles.personalDetails} componentSection innerPadding`}
-    >
+    <section className={'componentSection innerPadding'}>
       <h2 className="mb-3">Personal Details</h2>
 
       <p className={`${styles.viewTemplateTitle} mb-1`}>First Name:</p>

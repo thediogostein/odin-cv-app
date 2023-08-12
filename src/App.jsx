@@ -14,12 +14,21 @@ function App() {
     firstName: 'First Name',
     lastName: 'Last Name',
     professionalTitle: 'Professional Title',
-    email: 'email@domain.com',
+  });
+
+  const [contactInfo, setContactInfo] = useState({
+    email: 'youremail@domain.com',
+    tel: '+55 54 99970 1234',
+    location: 'City - Country',
+    website: 'www.yourwebsite.dev',
   });
 
   const savePersonalDetails = (details) => {
     setPersonalDetails(details);
-    console.log(details);
+  };
+
+  const saveContactInfo = (info) => {
+    setContactInfo(info);
   };
 
   return (
@@ -29,7 +38,7 @@ function App() {
         <div className="main-wrapper">
           <div className="col-left">
             <PersonalDetails savePersonalDetails={savePersonalDetails} />
-            <ContactInfo />
+            <ContactInfo saveContactInfo={saveContactInfo} />
             <Education />
             <Experience />
             <Skills />
@@ -39,10 +48,11 @@ function App() {
               firstName={personalDetails.firstName}
               lastName={personalDetails.lastName}
               professionalTitle={personalDetails.professionalTitle}
-              // email={personalDetails.email}
-              // tel={personalDetails.tel}
+              email={contactInfo.email}
+              tel={contactInfo.tel}
               summary={personalDetails.summary}
-              // location={personalDetails.location}
+              location={contactInfo.location}
+              website={contactInfo.website}
             />
           </div>
         </div>

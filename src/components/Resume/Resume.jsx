@@ -12,6 +12,7 @@ const Resume = ({
   tel,
   summary,
   location,
+  website,
 }) => {
   return (
     <article className={styles.resume}>
@@ -27,6 +28,7 @@ const Resume = ({
           <p className={`${styles.tel} mb-2`}>{tel}</p>
           <p className={`${styles.location} mb-2`}>{location}</p>
         </address>
+        <p className={`${styles.website} mb-2`}>{website}</p>
         <p className={`${styles.bio} mb-2`}>{summary}</p>
       </header>
       <section className={`${styles.resumeBody} innerPadding`}>
