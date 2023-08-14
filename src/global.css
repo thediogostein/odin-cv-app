@@ -222,6 +222,64 @@ textarea {
   font-size: 1.1rem;
 }
 
+button {
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-block;
+}
+
+.smallBtn {
+  border: none;
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+}
+
+.mediumBtn {
+  border: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 5px;
+}
+
+.cancelBtn {
+  background-color: #64748b;
+  color: #fef2f2;
+}
+
+.cancelBtn:hover,
+.cancelBtn:focus {
+  background-color: #475569;
+}
+
+.saveBtn {
+  background-color: #2563eb;
+  color: #fef2f2;
+}
+
+.saveBtn:hover,
+.saveBtn:focus {
+  background-color: #1d4ed8;
+}
+
+.editBtn {
+  background-color: #2563eb;
+  color: #fef2f2;
+}
+
+.editBtn:hover,
+.editBtn:focus {
+  background-color: #1d4ed8;
+}
+
+.removeBtn {
+  background-color: #dc2626;
+  color: #fef2f2;
+}
+
+.removeBtn:hover,
+.removeBtn:focus {
+  background-color: #b91c1c;
+}
+
 /* Sections */
 
 main {

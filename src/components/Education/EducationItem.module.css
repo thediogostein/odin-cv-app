@@ -1,0 +1,23 @@
+.viewTemplateTitle {
+  font-weight: 700;
+}
+
+.date {
+  font-size: 0.85rem;
+}
+
+.editingTemplateBtns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.viewTemplateBtns {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.cancelBtn {
+  margin-right: 0.5rem;
+}

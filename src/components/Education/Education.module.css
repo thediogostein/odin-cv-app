@@ -1,0 +1,12 @@
+.viewTemplateTitle {
+  font-weight: 700;
+}
+
+.date {
+  font-size: 0.85rem;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
