@@ -9,6 +9,33 @@ import Resume from './components/Resume/Resume';
 
 import './global.css';
 
+const MOCK_DATA = [
+  {
+    id: 1,
+    school: 'UPF',
+    degree: 'Ciência da Computação',
+    startDate: '15/12/2018',
+    endDate: '15/12/2018',
+    location: 'Passo Fundo',
+  },
+  {
+    id: 2,
+    school: 'UFRGS',
+    degree: 'Ciência da Computação',
+    startDate: '15/12/2018',
+    endDate: '15/12/2018',
+    location: 'Passo Fundo',
+  },
+  {
+    id: 3,
+    school: 'MIT',
+    degree: 'Ciência da Computação',
+    startDate: '15/12/2018',
+    endDate: '15/12/2018',
+    location: 'Passo Fundo',
+  },
+];
+
 function App() {
   const [personalDetails, setPersonalDetails] = useState({
     firstName: 'First Name',
@@ -22,6 +49,20 @@ function App() {
     location: 'City - Country',
     website: 'www.yourwebsite.dev',
   });
+
+  const [educationArr, setEducationArr] = useState([]);
+
+  const [experienceArr, setExperienceArr] = useState([
+    {
+      id: 0,
+      title: 'Web Developer',
+      company: 'Google',
+      location: 'Remote',
+      startDate: '',
+      endDate: '',
+      description: 'lorem ipsum lorem ipsum',
+    },
+  ]);
 
   const savePersonalDetails = (details) => {
     setPersonalDetails(details);
@@ -39,7 +80,10 @@ function App() {
           <div className="col-left">
             <PersonalDetails savePersonalDetails={savePersonalDetails} />
             <ContactInfo saveContactInfo={saveContactInfo} />
-            <Education />
+            <Education
+              educationArr={educationArr}
+              setEducationArr={setEducationArr}
+            />
             <Experience />
             <Skills />
           </div>
@@ -53,6 +97,8 @@ function App() {
               summary={personalDetails.summary}
               location={contactInfo.location}
               website={contactInfo.website}
+              educationArr={educationArr}
+              experienceArr={experienceArr}
             />
           </div>
         </div>

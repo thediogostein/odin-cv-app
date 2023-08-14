@@ -23,10 +23,6 @@ const PersonalDetails = ({ savePersonalDetails }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!details.firstName) {
-      setRequiredMessage('preencha nome');
-      return;
-    }
     savePersonalDetails(details);
     setIsEditing(false);
   };

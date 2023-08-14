@@ -5,33 +5,6 @@ import { nanoid } from 'nanoid';
 
 import styles from './Education.module.css';
 
-const educationFake = [
-  {
-    id: 1,
-    school: 'UPF',
-    degree: 'Ciência da Computação',
-    startDate: '15/12/2018',
-    endDate: '15/12/2018',
-    location: 'Passo Fundo',
-  },
-  {
-    id: 2,
-    school: 'UFRGS',
-    degree: 'Ciência da Computação',
-    startDate: '15/12/2018',
-    endDate: '15/12/2018',
-    location: 'Passo Fundo',
-  },
-  {
-    id: 3,
-    school: 'MIT',
-    degree: 'Ciência da Computação',
-    startDate: '15/12/2018',
-    endDate: '15/12/2018',
-    location: 'Passo Fundo',
-  },
-];
-
 const educationObj = {
   school: '',
   degree: '',
@@ -40,9 +13,8 @@ const educationObj = {
   location: '',
 };
 
-const Education = () => {
+const Education = ({ educationArr, setEducationArr }) => {
   const [education, setEducation] = useState(educationObj);
-  const [educationArr, setEducationArr] = useState(educationFake);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleChange = (e) => {

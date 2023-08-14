@@ -13,6 +13,8 @@ const Resume = ({
   summary,
   location,
   website,
+  educationArr,
+  experienceArr,
 }) => {
   return (
     <article className={styles.resume}>
@@ -35,15 +37,32 @@ const Resume = ({
         <section className="mb-6">
           <h2 className="mb-4">Education</h2>
           <div className={styles.resumeBodyRow}>
-            <ResumeEducation />
-            <ResumeEducation />
+            {educationArr.map((item) => (
+              <ResumeEducation
+                key={item.id}
+                degree={item.degree}
+                school={item.school}
+                location={item.location}
+                startDate={item.startDate}
+                endDate={item.endDate}
+              />
+            ))}
           </div>
         </section>
 
         <section>
           <h2 className="mb-4">Work Experience</h2>
-          <ResumeExperience />
-          <ResumeExperience />
+          {experienceArr.map((item) => (
+            <ResumeExperience
+              key={item.id}
+              title={item.title}
+              company={item.company}
+              location={item.location}
+              startDate={item.startDate}
+              endDate={item.endDate}
+              description={item.description}
+            />
+          ))}
         </section>
 
         <section>
