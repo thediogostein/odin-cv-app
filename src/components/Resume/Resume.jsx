@@ -77,11 +77,6 @@ const Resume = ({
             <ResumeExperience key={item.id} item={item} />
           ))}
         </section>
-
-        <section>
-          <h2 className="mb-4">Skills</h2>
-          <ResumeSkills />
-        </section>
       </section>
     </article>
   );
