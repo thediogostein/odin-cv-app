@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
-import Button from '../UI/Button';
 
-import styles from './EducationItem.module.css';
-
-const EducationItem = ({ item, editItem, removeItem }) => {
+const ExperienceItem = ({ item, updateEducationItem, removeEducationItem }) => {
+  const [updatedItem, setUpdatedItem] = useState({ ...item });
   const [isEditing, setIsEditing] = useState(false);
-  const [newEducation, setNewEducation] = useState({
-    id: item.id,
-    school: item.school,
-    degree: item.degree,
-    startDate: '',
-    endDate: '',
-    location: item.location,
-  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setNewEducation((prev) => {
+    setUpdatedItem((prev) => {
       return {
         ...prev,
         [name]: value,
@@ -27,93 +16,27 @@ const EducationItem = ({ item, editItem, removeItem }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editItem(item.id, newEducation);
+
+    // updateExperienceItem(item.id, updatedItem);
+    updateEducationItem(item.id, updatedItem);
     setIsEditing(false);
   };
 
-  const editingTemplate = (
-    <form onSubmit={handleSubmit} className=" mb-5">
-      <div>
-        <label htmlFor="school">School</label>
-        <input
-          id="school"
-          type="text"
-          name="school"
-          onChange={handleChange}
-          value={newEducation.school}
-          placeholder="Enter school / university"
-        />
-      </div>
-      <div>
-        <label htmlFor="degree">Degree</label>
-        <input
-          id="degree"
-          type="text"
-          name="degree"
-          onChange={handleChange}
-          value={newEducation.degree}
-          placeholder="Enter degree / field of study"
-        />
-      </div>
-      <div>
-        <label htmlFor="startDate">Start Date</label>
-        <input
-          id="startDate"
-          type="date"
-          name="startDate"
-          onChange={handleChange}
-          value={newEducation.startDate}
-        />
-        <label htmlFor="endDate">End Date</label>
-        <input
-          id="endDate"
-          type="date"
-          name="endDate"
-          onChange={handleChange}
-          value={newEducation.endDate}
-        />
-      </div>
-      <div>
-        <label htmlFor="location">Location</label>
-        <input
-          id="location"
-          name="location"
-          type="text"
-          onChange={handleChange}
-          value={newEducation.location}
-          className="mb-4"
-        />
-      </div>
-      <div className={`${styles.editingTemplateBtns}`}>
-        <div>
-          <button
-            type="button"
-            onClick={() => setIsEditing(false)}
-            className={`${styles.cancelBtn} mediumBtn cancelBtn`}
-          >
-            Cancel
-          </button>
-          <button type="submit" className={`mediumBtn saveBtn`}>
-            Save
-          </button>
-        </div>
-      </div>
-    </form>
-  );
-
   const viewTemplate = (
-    <li className=" mb-3">
-      <p className={`${styles.viewTemplateTitle} mb-1`}>
-        {item.degree} - {item.school}
+    <li className="mb-3">
+      <p className="fw-700">{updatedItem.degree}</p>
+      <p>
+        {updatedItem.school} - {updatedItem.location}
       </p>
-      <p className={`${styles.date} mb-1`}>
-        {item.startDate} - {item.endDate}
+
+      <p>
+        {updatedItem.startDate} - {updatedItem.endDate}
       </p>
-      <p>{item.location}</p>
-      <div className={styles.viewTemplateBtns}>
+
+      <div>
         <button
           className="smallBtn removeBtn"
-          onClick={() => removeItem(item.id)}
+          onClick={() => removeEducationItem(item.id)}
         >
           remove
         </button>
@@ -123,7 +46,84 @@ const EducationItem = ({ item, editItem, removeItem }) => {
       </div>
     </li>
   );
+
+  const editingTemplate = (
+    <form onSubmit={handleSubmit} className="mb-5">
+      <div>
+        <label htmlFor="degree">Degree</label>
+        <input
+          id="degree"
+          type="text"
+          name="degree"
+          value={updatedItem.degree}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="school">School</label>
+        <input
+          id="school"
+          type="text"
+          name="school"
+          value={updatedItem.school}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="d-flex ">
+        <div className="col">
+          <label htmlFor="startDate">Start Date</label>
+          <input
+            id="startDate"
+            type="text"
+            name="startDate"
+            value={updatedItem.startDate}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="col">
+          <label htmlFor="endDate">End Date</label>
+          <input
+            id="endDate"
+            type="text"
+            name="endDate"
+            value={updatedItem.endDate}
+            onChange={handleChange}
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="location">Location</label>
+        <input
+          id="location"
+          type="text"
+          name="location"
+          value={updatedItem.location}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      <div>
+        <button
+          className="mediumBtn cancelBtn"
+          type="button"
+          onClick={() => setIsEditing(false)}
+        >
+          Cancel
+        </button>
+        <button className="mediumBtn saveBtn" type="submit">
+          Save
+        </button>
+      </div>
+    </form>
+  );
+
   return <>{isEditing ? editingTemplate : viewTemplate}</>;
 };
 
-export default EducationItem;
+export default ExperienceItem;

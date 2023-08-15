@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-const ExperienceItem = ({ item, updateExperienceItem }) => {
+const ExperienceItem = ({
+  item,
+  updateExperienceItem,
+  removeExperienceItem,
+}) => {
   const [updatedItem, setUpdatedItem] = useState({ ...item });
   const [isEditing, setIsEditing] = useState(false);
 
@@ -34,14 +38,21 @@ const ExperienceItem = ({ item, updateExperienceItem }) => {
 
       <p className="mb-2">{updatedItem.description}</p>
       <div>
-        <button>remove</button>
-        <button onClick={() => setIsEditing(true)}>edit</button>
+        <button
+          className="smallBtn removeBtn"
+          onClick={() => removeExperienceItem(item.id)}
+        >
+          remove
+        </button>
+        <button className="smallBtn editBtn" onClick={() => setIsEditing(true)}>
+          edit
+        </button>
       </div>
     </li>
   );
 
   const editingTemplate = (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mb-5">
       <div>
         <label htmlFor="company">Company</label>
         <input
@@ -111,10 +122,16 @@ const ExperienceItem = ({ item, updateExperienceItem }) => {
         ></textarea>
       </div>
       <div>
-        <button type="button" onClick={() => setIsEditing(false)}>
+        <button
+          className="mediumBtn cancelBtn"
+          type="button"
+          onClick={() => setIsEditing(false)}
+        >
           Cancel
         </button>
-        <button type="submit">Save</button>
+        <button className="mediumBtn saveBtn" type="submit">
+          Save
+        </button>
       </div>
     </form>
   );

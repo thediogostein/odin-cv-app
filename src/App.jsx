@@ -4,7 +4,6 @@ import PersonalDetails from './components/PersonalDetails/PersonalDetails';
 import ContactInfo from './components/ContactInfo/ContactInfo';
 import Education from './components/Education/Education';
 import Experience from './components/Experience/Experience';
-import Skills from './components/Skills/Skills';
 import Resume from './components/Resume/Resume';
 
 import './global.css';
@@ -50,7 +49,24 @@ function App() {
     website: 'www.yourwebsite.dev',
   });
 
-  const [educationArr, setEducationArr] = useState([]);
+  const [educationArr, setEducationArr] = useState([
+    {
+      id: 0,
+      school: 'MIT',
+      degree: 'Computer Science',
+      location: 'USA',
+      startDate: '2012',
+      endDate: '2016',
+    },
+    {
+      id: 1,
+      school: 'Harvard',
+      degree: 'Computer Science',
+      location: 'USA',
+      startDate: '2019',
+      endDate: 'present',
+    },
+  ]);
 
   const [experienceArr, setExperienceArr] = useState([
     {
@@ -90,19 +106,45 @@ function App() {
     setContactInfo(info);
   };
 
+  // Education
+  const addEducationItem = (newItem) => {
+    console.log(newItem);
+    setEducationArr((prev) => [...prev, newItem]);
+  };
+
+  const removeEducationItem = (id) => {
+    const remainingEducationItems = educationArr.filter(
+      (item) => item.id !== id
+    );
+    setEducationArr(remainingEducationItems);
+  };
+
+  const updateEducationItem = (id, updatedItem) => {
+    const updatedEducationList = educationArr.map((item) =>
+      item.id === id ? updatedItem : item
+    );
+    setEducationArr(updatedEducationList);
+  };
+
   // Experience
   const addExperienceItem = (newItem) => {
     setExperienceArr((prev) => [...prev, newItem]);
   };
 
   const updateExperienceItem = (id, updatedItem) => {
-    console.log(id, updatedItem);
-
     const updatedExperienceList = experienceArr.map((item) =>
       item.id === id ? updatedItem : item
     );
 
     setExperienceArr(updatedExperienceList);
+  };
+
+  const removeExperienceItem = (id) => {
+    console.log('removed', id);
+    const remainingExperienceList = experienceArr.filter(
+      (item) => item.id !== id
+    );
+    setExperienceArr(remainingExperienceList);
   };
 
   return (
@@ -115,15 +157,16 @@ function App() {
             <ContactInfo saveContactInfo={saveContactInfo} />
             <Education
               educationArr={educationArr}
-              setEducationArr={setEducationArr}
+              addEducationItem={addEducationItem}
+              updateEducationItem={updateEducationItem}
+              removeEducationItem={removeEducationItem}
             />
             <Experience
               experienceArr={experienceArr}
               addExperienceItem={addExperienceItem}
               updateExperienceItem={updateExperienceItem}
-              // removeExperienceItem={removeExperienceItem}
+              removeExperienceItem={removeExperienceItem}
             />
-            <Skills />
           </div>
           <div className="col-right">
             <Resume

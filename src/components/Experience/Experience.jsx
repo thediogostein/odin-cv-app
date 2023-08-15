@@ -13,7 +13,12 @@ const newExperienceObj = {
 };
 
 const Experience = (props) => {
-  const { experienceArr, addExperienceItem, updateExperienceItem } = props;
+  const {
+    experienceArr,
+    addExperienceItem,
+    updateExperienceItem,
+    removeExperienceItem,
+  } = props;
 
   const [isEditing, setIsEditing] = useState(false);
   const [newExperience, setNewExperience] = useState(newExperienceObj);
@@ -30,8 +35,6 @@ const Experience = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const startDate = newExperience.startDate;
-    const endDate = newExperience.endDate;
     const newItem = {
       id: nanoid(),
       company: newExperience.company,
@@ -44,9 +47,6 @@ const Experience = (props) => {
     addExperienceItem(newItem);
     setNewExperience(newExperienceObj);
     setIsEditing(false);
-
-    console.log('startDate ', startDate);
-    console.log(endDate);
   };
 
   const editingTemplate = (
@@ -59,6 +59,7 @@ const Experience = (props) => {
           name="company"
           value={newExperience.company}
           onChange={handleChange}
+          placeholder="e.g. Google"
           required
         />
       </div>
@@ -70,6 +71,7 @@ const Experience = (props) => {
           name="position"
           value={newExperience.position}
           onChange={handleChange}
+          placeholder="e.g Web Developer"
           required
         />
       </div>
@@ -81,6 +83,7 @@ const Experience = (props) => {
           name="startDate"
           value={newExperience.startDate}
           onChange={handleChange}
+          placeholder="e.g. Dec, 2018"
           required
         />
       </div>
@@ -92,6 +95,7 @@ const Experience = (props) => {
           name="endDate"
           value={newExperience.endDate}
           onChange={handleChange}
+          placeholder="e.g. Jan, 2020"
           required
         />
       </div>
@@ -104,6 +108,7 @@ const Experience = (props) => {
           name="location"
           value={newExperience.location}
           onChange={handleChange}
+          placeholder="e.g. Remote"
           required
         />
       </div>
@@ -116,14 +121,21 @@ const Experience = (props) => {
           rows="4"
           value={newExperience.description}
           onChange={handleChange}
+          placeholder="lorem ipsum lorem ipsum"
           required
         ></textarea>
       </div>
       <div>
-        <button type="button" onClick={() => setIsEditing(false)}>
+        <button
+          className="mediumBtn cancelBtn"
+          type="button"
+          onClick={() => setIsEditing(false)}
+        >
           Cancel
         </button>
-        <button type="submit">Save</button>
+        <button className="mediumBtn saveBtn" type="submit">
+          Save
+        </button>
       </div>
     </form>
   );
@@ -135,6 +147,7 @@ const Experience = (props) => {
           key={item.id}
           item={item}
           updateExperienceItem={updateExperienceItem}
+          removeExperienceItem={removeExperienceItem}
         />
       ))}
       <Button onClick={() => setIsEditing(true)}>Add Experience</Button>

@@ -191,6 +191,15 @@ h2 {
   padding: 2rem;
 }
 
+.d-flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.col {
+  width: 50%;
+}
+
 /* Sitewide */
 
 label {
@@ -232,6 +241,8 @@ button {
   display: inline-block;
 }
 
+/* Components */
+
 .smallBtn {
   border: none;
   padding: 0.25rem 0.65rem;
@@ -247,6 +258,7 @@ button {
 .cancelBtn {
   background-color: #64748b;
   color: #fef2f2;
+  margin-right: 0.5rem;
 }
 
 .cancelBtn:hover,
@@ -277,6 +289,7 @@ button {
 .removeBtn {
   background-color: #dc2626;
   color: #fef2f2;
+  margin-right: 0.25rem;
 }
 
 .removeBtn:hover,

@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import EducationItem from './EducationItem';
-import Button from '../UI/Button';
 import { nanoid } from 'nanoid';
+import Button from '../UI/Button';
+import EducationItem from './EducationItem';
 
-import styles from './Education.module.css';
-
-const educationObj = {
+const newEducationObj = {
   school: '',
   degree: '',
   startDate: '',
@@ -13,14 +11,20 @@ const educationObj = {
   location: '',
 };
 
-const Education = ({ educationArr, setEducationArr }) => {
-  const [education, setEducation] = useState(educationObj);
+const Education = (props) => {
+  const {
+    educationArr,
+    updateEducationItem,
+    removeEducationItem,
+    addEducationItem,
+  } = props;
+
   const [isEditing, setIsEditing] = useState(false);
+  const [newEducation, setNewEducation] = useState(newEducationObj);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setEducation((prev) => {
+    setNewEducation((prev) => {
       return {
         ...prev,
         [name]: value,
@@ -30,120 +34,117 @@ const Education = ({ educationArr, setEducationArr }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newEducationItem = {
-      ...education,
+    const newItem = {
       id: nanoid(),
+      school: newEducation.school,
+      degree: newEducation.degree,
+      startDate: newEducation.startDate,
+      endDate: newEducation.endDate,
+      location: newEducation.location,
     };
-
-    setEducationArr((prev) => [...prev, newEducationItem]);
-    setEducation(educationObj);
+    addEducationItem(newItem);
+    setNewEducation(newEducationObj);
     setIsEditing(false);
-  };
-
-  const removeItem = (id) => {
-    const remainingItems = educationArr.filter((item) => item.id !== id);
-    setEducationArr(remainingItems);
-  };
-
-  const editItem = (id, updatedItem) => {
-    console.log('item to be edited is ', id);
-    console.log(updatedItem);
-
-    const updatedEducationList = educationArr.map((item) =>
-      item.id === id ? updatedItem : item
-    );
-
-    console.log(updatedEducationList);
-
-    setEducationArr(updatedEducationList);
   };
 
   const editingTemplate = (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="school">School</label>
-        <input
-          id="school"
-          type="text"
-          name="school"
-          onChange={handleChange}
-          value={education.school}
-          placeholder="Enter school / university"
-        />
-      </div>
       <div>
         <label htmlFor="degree">Degree</label>
         <input
           id="degree"
           type="text"
           name="degree"
+          placeholder="Computer Science"
+          value={newEducation.degree}
           onChange={handleChange}
-          value={education.degree}
-          placeholder="Enter degree / field of study"
+          required
         />
       </div>
       <div>
-        <label htmlFor="startDate">Start Date</label>
+        <label htmlFor="school">School</label>
         <input
-          id="startDate"
-          type="date"
-          name="startDate"
+          id="school"
+          type="text"
+          name="school"
+          placeholder="Harvard"
+          value={newEducation.school}
           onChange={handleChange}
-          value={education.startDate}
-        />
-        <label htmlFor="endDate">End Date</label>
-        <input
-          id="endDate"
-          type="date"
-          name="endDate"
-          onChange={handleChange}
-          value={education.endDate}
+          required
         />
       </div>
+      <div className="d-flex">
+        <div className="col">
+          <label htmlFor="startDate">Start Date</label>
+          <input
+            id="startDate"
+            type="text"
+            name="startDate"
+            value={newEducation.startDate}
+            onChange={handleChange}
+            placeholder="e.g. Jan, 2014"
+            required
+          />
+        </div>
+        <div className="col">
+          <label htmlFor="endDate">End Date</label>
+          <input
+            id="endDate"
+            type="text"
+            name="endDate"
+            value={newEducation.endDate}
+            onChange={handleChange}
+            placeholder="present"
+            required
+          />
+        </div>
+      </div>
+
       <div>
         <label htmlFor="location">Location</label>
         <input
           id="location"
-          name="location"
           type="text"
+          name="location"
+          placeholder="e.g. New York City"
+          value={newEducation.location}
           onChange={handleChange}
-          value={education.location}
+          required
         />
       </div>
-      <div className={styles.btns}>
-        <div>
-          <button type="button" onClick={() => setIsEditing(false)}>
-            Cancel
-          </button>
-          <button type="submit">Add</button>
-        </div>
+
+      <div>
+        <button
+          className="mediumBtn cancelBtn"
+          type="button"
+          onClick={() => setIsEditing(false)}
+        >
+          Cancel
+        </button>
+        <button className="mediumBtn saveBtn" type="submit">
+          Save
+        </button>
       </div>
     </form>
   );
 
   const viewTemplate = (
-    <>
-      <ul>
-        {educationArr.map((item) => (
-          <EducationItem
-            key={item.id}
-            item={item}
-            removeItem={removeItem}
-            education={education}
-            setEducation={setEducation}
-            editItem={editItem}
-          />
-        ))}
-      </ul>
-      <Button onClick={() => setIsEditing(true)}>Add education</Button>
-    </>
+    <ul>
+      {educationArr.map((item) => (
+        <EducationItem
+          key={item.id}
+          item={item}
+          updateEducationItem={updateEducationItem}
+          removeEducationItem={removeEducationItem}
+        />
+      ))}
+      <Button onClick={() => setIsEditing(true)}>Add Education</Button>
+    </ul>
   );
 
   return (
     <article className="componentSection innerPadding">
       <h2 className="mb-3">Education</h2>
-
       {isEditing ? editingTemplate : viewTemplate}
     </article>
   );
