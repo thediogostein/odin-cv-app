@@ -3,6 +3,12 @@ import styles from './Resume.module.css';
 import ResumeEducation from './ResumeEducation';
 import ResumeExperience from './ResumeExperience';
 import ResumeSkills from './ResumeSkills';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEnvelope,
+  faPhone,
+  faLocationDot,
+} from '@fortawesome/free-solid-svg-icons';
 
 const Resume = ({
   firstName,
@@ -26,12 +32,27 @@ const Resume = ({
           {professionalTitle}
         </p>
         <address>
-          <p className={`${styles.email} mb-2`}>{email}</p>
-          <p className={`${styles.tel} mb-2`}>{tel}</p>
-          <p className={`${styles.location} mb-2`}>{location}</p>
+          <p className="mb-2">
+            <span className={styles.icon}>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </span>
+            {email}
+          </p>
+          <p className="mb-2">
+            <span className={styles.icon}>
+              <FontAwesomeIcon icon={faPhone} />
+            </span>
+            {tel}
+          </p>
+          <p className="mb-2">
+            <span className={styles.icon}>
+              <FontAwesomeIcon icon={faLocationDot} />
+            </span>{' '}
+            {location}
+          </p>
         </address>
-        <p className={`${styles.website} mb-2`}>{website}</p>
-        <p className={`${styles.bio} mb-2`}>{summary}</p>
+        <p className="mb-2">{website}</p>
+        <p className="mb-2">{summary}</p>
       </header>
       <section className={`${styles.resumeBody} innerPadding`}>
         <section className="mb-6">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from '../UI/Button';
-import styles from './PersonalDetails.module.css';
 
 const PersonalDetails = ({ savePersonalDetails }) => {
   const [details, setDetails] = useState({
@@ -31,14 +30,14 @@ const PersonalDetails = ({ savePersonalDetails }) => {
     <section className={'componentSection innerPadding'}>
       <h2 className="mb-3">Personal Details</h2>
 
-      <p className={`${styles.viewTemplateTitle} mb-1`}>First Name:</p>
+      <p className="fw-700 mb-1">First Name:</p>
 
       <p className="mb-2">{details.firstName}</p>
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Last Name:</p>
+      <p className="fw-700 mb-1">Last Name:</p>
       <p className="mb-2">{details.lastName}</p>
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Professional Title</p>
+      <p className="fw-700 mb-1">Professional Title</p>
       <p className="mb-2">{details.professionalTitle}</p>
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Summary</p>
+      <p className="fw-700 mb-1">Summary</p>
       <p className="mb-2">{details.summary}</p>
       <Button onClick={() => setIsEditing(true)}>Edit</Button>
     </section>

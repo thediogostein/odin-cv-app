@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from '../UI/Button';
-import styles from './ContactInfo.module.css';
 
 const ContactInfo = ({ saveContactInfo }) => {
   const [contact, setContact] = useState({
@@ -31,23 +30,20 @@ const ContactInfo = ({ saveContactInfo }) => {
     <section className={'componentSection innerPadding'}>
       <h2 className="mb-3">Contact Info</h2>
 
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Email:</p>
+      <p className="fw-700 mb-1">Email:</p>
       <p className="mb-2">{contact.email}</p>
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Phone Number:</p>
+      <p className="fw-700 mb-1">Phone Number:</p>
       <p className="mb-2">{contact.tel}</p>
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Location:</p>
+      <p className="fw-700 mb-1">Location:</p>
       <p className="mb-2">{contact.location}</p>
-      <p className={`${styles.viewTemplateTitle} mb-1`}>Website</p>
+      <p className="fw-700 mb-1">Website</p>
       <p className="mb-2">{contact.website}</p>
       <Button onClick={() => setIsEditing(true)}>Edit</Button>
     </section>
   );
 
   const editingTemplate = (
-    <form
-      onSubmit={handleSubmit}
-      className={`${styles.contactInfo} componentSection innerPadding`}
-    >
+    <form onSubmit={handleSubmit} className="componentSection innerPadding">
       <h2 className="mb-3">Contact Info</h2>
       <div>
         <label htmlFor="email">Email:</label>
@@ -100,8 +96,6 @@ const ContactInfo = ({ saveContactInfo }) => {
       <Button>Save</Button>
     </form>
   );
-
-  // console.log(contact);
 
   return <>{isEditing ? editingTemplate : viewTemplate}</>;
 };

@@ -22,19 +22,8 @@
   font-weight: 700;
 }
 
-.email {
-}
-
-.tel {
-}
-
-.location {
-}
-
-.bio {
-}
-
-.resumeHeader h2 {
+.icon {
+  margin-right: 0.45rem;
 }
 
 .resumeBody {
