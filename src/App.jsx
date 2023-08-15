@@ -49,54 +49,9 @@ function App() {
     website: 'www.yourwebsite.dev',
   });
 
-  const [educationArr, setEducationArr] = useState([
-    {
-      id: 0,
-      school: 'MIT',
-      degree: 'Computer Science',
-      location: 'USA',
-      startDate: '2012',
-      endDate: '2016',
-    },
-    {
-      id: 1,
-      school: 'Harvard',
-      degree: 'Computer Science',
-      location: 'USA',
-      startDate: '2019',
-      endDate: 'present',
-    },
-  ]);
+  const [educationArr, setEducationArr] = useState([]);
 
-  const [experienceArr, setExperienceArr] = useState([
-    {
-      id: 0,
-      position: 'Web Developer',
-      company: 'Google',
-      location: 'Remote',
-      startDate: 'start',
-      endDate: 'end',
-      description: 'lorem ipsum lorem ipsum',
-    },
-    {
-      id: 1,
-      position: 'Full Stack Developer',
-      company: 'Google',
-      location: 'Remote',
-      startDate: 'start',
-      endDate: 'end',
-      description: 'lorem ipsum lorem ipsum',
-    },
-    {
-      id: 2,
-      position: 'UI Designer',
-      company: 'Google',
-      location: 'Remote',
-      startDate: 'start',
-      endDate: 'end',
-      description: 'lorem ipsum lorem ipsum',
-    },
-  ]);
+  const [experienceArr, setExperienceArr] = useState([]);
 
   const savePersonalDetails = (details) => {
     setPersonalDetails(details);
