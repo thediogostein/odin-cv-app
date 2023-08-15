@@ -55,11 +55,29 @@ function App() {
   const [experienceArr, setExperienceArr] = useState([
     {
       id: 0,
-      title: 'Web Developer',
+      position: 'Web Developer',
       company: 'Google',
       location: 'Remote',
-      startDate: '',
-      endDate: '',
+      startDate: 'start',
+      endDate: 'end',
+      description: 'lorem ipsum lorem ipsum',
+    },
+    {
+      id: 1,
+      position: 'Full Stack Developer',
+      company: 'Google',
+      location: 'Remote',
+      startDate: 'start',
+      endDate: 'end',
+      description: 'lorem ipsum lorem ipsum',
+    },
+    {
+      id: 2,
+      position: 'UI Designer',
+      company: 'Google',
+      location: 'Remote',
+      startDate: 'start',
+      endDate: 'end',
       description: 'lorem ipsum lorem ipsum',
     },
   ]);
@@ -70,6 +88,21 @@ function App() {
 
   const saveContactInfo = (info) => {
     setContactInfo(info);
+  };
+
+  // Experience
+  const addExperienceItem = (newItem) => {
+    setExperienceArr((prev) => [...prev, newItem]);
+  };
+
+  const updateExperienceItem = (id, updatedItem) => {
+    console.log(id, updatedItem);
+
+    const updatedExperienceList = experienceArr.map((item) =>
+      item.id === id ? updatedItem : item
+    );
+
+    setExperienceArr(updatedExperienceList);
   };
 
   return (
@@ -84,7 +117,12 @@ function App() {
               educationArr={educationArr}
               setEducationArr={setEducationArr}
             />
-            <Experience />
+            <Experience
+              experienceArr={experienceArr}
+              addExperienceItem={addExperienceItem}
+              updateExperienceItem={updateExperienceItem}
+              // removeExperienceItem={removeExperienceItem}
+            />
             <Skills />
           </div>
           <div className="col-right">

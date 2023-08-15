@@ -1,24 +1,17 @@
 import React from 'react';
 import styles from './ResumeExperience.module.css';
 
-const ResumeExperience = ({
-  title,
-  company,
-  location,
-  startDate,
-  endDate,
-  description,
-}) => {
+const ResumeExperience = ({ item }) => {
   return (
     <section className={`mb-3`}>
-      <p className={`${styles.title} mb-1`}>{title}</p>
-      <p className="mb-1">{company}</p>
-      <p className="mb-1">{location}</p>
+      <p className="fw-700 mb-1">{item.position}</p>
+      <p className="mb-1">{item.company}</p>
+      <p className="mb-1">{item.location}</p>
       <p className={`${styles.date} mb-1`}>
-        {startDate} - {endDate}
+        {item.startDate} {item.endDate}
       </p>
 
-      <p className="mb-1">{description}</p>
+      <p className="mb-1">{item.description}</p>
     </section>
   );
 };

@@ -53,15 +53,7 @@ const Resume = ({
         <section>
           <h2 className="mb-4">Work Experience</h2>
           {experienceArr.map((item) => (
-            <ResumeExperience
-              key={item.id}
-              title={item.title}
-              company={item.company}
-              location={item.location}
-              startDate={item.startDate}
-              endDate={item.endDate}
-              description={item.description}
-            />
+            <ResumeExperience key={item.id} item={item} />
           ))}
         </section>
 

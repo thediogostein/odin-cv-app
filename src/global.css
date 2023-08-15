@@ -177,6 +177,10 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.fw-700 {
+  font-weight: 700;
+}
+
 .wrapper {
   width: 95%;
   max-width: 1200px;
