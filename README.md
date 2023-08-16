@@ -8,7 +8,7 @@ This is a project for The Odin Project - React Course
 
 ## Screenshot
 
-![App Screenshot](screenshot/screenshot.png)text=App+Screenshot+Here
+![App Screenshot](screenshot/screenshot.png)
 
 ## Learnings
 
