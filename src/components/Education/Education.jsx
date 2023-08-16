@@ -55,7 +55,7 @@ const Education = (props) => {
           id="degree"
           type="text"
           name="degree"
-          placeholder="Computer Science"
+          placeholder="e.g. Computer Science"
           value={newEducation.degree}
           onChange={handleChange}
           required
@@ -67,7 +67,7 @@ const Education = (props) => {
           id="school"
           type="text"
           name="school"
-          placeholder="Harvard"
+          placeholder="e.g. Harvard"
           value={newEducation.school}
           onChange={handleChange}
           required
@@ -94,7 +94,7 @@ const Education = (props) => {
             name="endDate"
             value={newEducation.endDate}
             onChange={handleChange}
-            placeholder="present"
+            placeholder="e.g. present"
             required
           />
         </div>

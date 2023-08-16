@@ -121,7 +121,7 @@ const Experience = (props) => {
           rows="4"
           value={newExperience.description}
           onChange={handleChange}
-          placeholder="lorem ipsum lorem ipsum"
+          placeholder="e.g. I crafted engaging websites using HTML, CSS, and JavaScript, prioritizing user experience. Backend-wise, I developed server logic with languages like Python and PHP, integrating databases and APIs for seamless functionality."
           required
         ></textarea>
       </div>
